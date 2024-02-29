@@ -239,64 +239,64 @@ function FilmPage() {
         </form>
         {validationMsg && <p className="warning">{validationMsg}</p>}
       </div>
-      
+
       <div className="list_table">
-      <table className="my_table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Release Year</th>
-            <th>Rental Rate</th>
-            <th>Rating</th>
-            <th>Special Features</th>
-          </tr>
-        </thead>
-        <tbody>
-          {outputFilm && outputFilm.map(item => {
-            return (
+        <table className="my_table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Release Year</th>
+              <th>Rental Rate</th>
+              <th>Rating</th>
+              <th>Special Features</th>
+            </tr>
+          </thead>
+          <tbody>
+            {outputFilm && outputFilm.map(item => {
+              return (
 
-              <tr key={item.film_id}>
+                <tr key={item.film_id}>
 
-                <td>
-                  <Popup  className="popup_window" trigger=
-                    {<button className="film_rent_button"> {item.title} </button>}
-                    modal nested>
-                    {
-                      close => (
-                        <div className="modal">
-                          <div className="content">
+                  <td>
+                    <Popup className="popup_window" trigger=
+                      {<button className="film_rent_button"> {item.title} </button>}
+                      modal nested>
+                      {
+                        close => (
+                          <div className="modal">
+                            <div className="content">
 
-                            <form onSubmit={handleSubmitRent}>
-                              <label>
-                                Enter Customer ID to rent {item.title}:
-                                <input
-                                  type="text"
-                                  ref={resetRentHelper}
-                                  value={idRent}
-                                  onChange={(event) => { setCustIdRent(event.target.value); setFilmRent(item.film_id) }}
-                                />
-                              </label>
-                              <button className="rent_now_button" type="submit">Rent</button>
-                            </form>
+                              <form onSubmit={handleSubmitRent}>
+                                <label>
+                                  Enter Customer ID to rent {item.title}:
+                                  <input
+                                    type="text"
+                                    ref={resetRentHelper}
+                                    value={idRent}
+                                    onChange={(event) => { setCustIdRent(event.target.value); setFilmRent(item.film_id) }}
+                                  />
+                                </label>
+                                <button className="rent_now_button" type="submit">Rent</button>
+                              </form>
 
+                            </div>
                           </div>
-                        </div>
-                      )
-                    }
-                  </Popup>
-                </td>
-                <td>{item.description}</td>
-                <td>{item.release_year}</td>
-                <td>{item.rental_rate}</td>
-                <td>{item.rating}</td>
-                <td>{item.special_features}</td>
-              </tr>
-            )
-          })
-          }
-        </tbody>
-      </table>
+                        )
+                      }
+                    </Popup>
+                  </td>
+                  <td>{item.description}</td>
+                  <td>{item.release_year}</td>
+                  <td>{item.rental_rate}</td>
+                  <td>{item.rating}</td>
+                  <td>{item.special_features}</td>
+                </tr>
+              )
+            })
+            }
+          </tbody>
+        </table>
       </div>
     </div>
   )
